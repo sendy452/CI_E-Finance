@@ -3,10 +3,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="E31192254" content="">
-  <meta name="Sendy" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>E-Finance | <?php echo $judul;?></title>
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
