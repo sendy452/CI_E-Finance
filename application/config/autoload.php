@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('template', 'session', 'database', 'table');
+$autoload['libraries'] = array('template', 'session', 'database', 'table', 'form_validation');
 //memnaggil library template, session, database dan table
 
 /*
@@ -90,7 +90,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('form','url');
 
 /*
 | -------------------------------------------------------------------

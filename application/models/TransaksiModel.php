@@ -3,7 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TransaksiModel extends CI_Model {
 
-	
+	public function insert_pemasukan()
+	{
+		// code...
+	}
+	public function get_pemasukan($id)
+	{
+		$this->db->select('*');
+		$this->db->from('pemasukan');
+		$this->db->where('id_user', $id);
+		$this->db->order_by('tgl_pemasukan', 'asc');
+		$query = $this->db->get()->result();
+		return $query;
+	}
 
 }
 
