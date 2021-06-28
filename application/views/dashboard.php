@@ -21,7 +21,7 @@
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
-                </div> &nbsp Total Pemasukan : Rp. 
+                </div> &nbsp Total Pemasukan: Rp. 
             </div>
             </div>
 
@@ -38,7 +38,7 @@
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
-                </div> &nbsp Total Pengeluaran : Rp. 
+                </div> &nbsp Total Pengeluaran: Rp. 
               </div>
             </div>
 
@@ -56,7 +56,7 @@
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
 
@@ -70,16 +70,17 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Karyawan</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Penggunaan Terakhir</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                      <i class="fas fa-file-invoice-dollar fa-2x text-gray-300"></i>
                     </div>
                   </div>
-                </div>
+                </div>&nbsp Keterangan: 
               </div>
             </div>
+
           </div>
 
           <!-- Content Row -->

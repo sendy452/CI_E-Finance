@@ -25,14 +25,14 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="<?=base_url('h/pendapatan');?>">
-      <i class="fas fa-fw fa-arrow-up"></i>
+      <i class="fas fa-chevron-right"><i class="fas fa-chevron-right"></i></i>
       <span>Pendapatan</span>
     </a>
   </li>
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="<?=base_url('h/pengeluaran');?>" >
-      <i class="fas fa-fw fa-arrow-down"></i>
+      <i class="fas fa-chevron-left"><i class="fas fa-chevron-left"></i></i>
       <span>Pengeluaran</span>
     </a>
   </li>
