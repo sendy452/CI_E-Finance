@@ -26,7 +26,7 @@ class UserModel extends CI_Model {
     }
     function proses_update($where, $data)
     {
-        $this->db->where($where);
+        $this->db->where('id_user',$where);
         $this->db->update('user', $data);
     }
 }

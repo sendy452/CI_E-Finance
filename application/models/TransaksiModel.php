@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TransaksiModel extends CI_Model {
 
-	public function insert_pemasukan()
+	public function insert_pemasukan($data)
 	{
-		// code...
+		$this->db->insert('pemasukan', $data);
 	}
 	public function get_pemasukan($id)
 	{
