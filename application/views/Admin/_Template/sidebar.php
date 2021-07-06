@@ -10,9 +10,9 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
+  <li class="nav-item <?= uri_string() == '' ? 'active':'' ?>">
     <a class="nav-link" href="<?=base_url();?>">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fas fa-fw fa-tachometer-alt" style="font-size: 20px;"></i>
       <span>Dashboard</span>
     </a>
   </li>
@@ -23,16 +23,16 @@
     Transaksi
   </div>
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item <?= uri_string() == 'h/pendapatan' ? 'active':'' ?>">
     <a class="nav-link collapsed" href="<?=base_url('h/pendapatan');?>">
-      <i class="fas fa-chevron-right"><i class="fas fa-chevron-right"></i></i>
+      <span class="material-icons" style="font-size: 20px;">bookmark_add</span>
       <span>Pendapatan</span>
     </a>
   </li>
   <!-- Nav Item - Utilities Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item <?= uri_string() == 'h/pengeluaran' ? 'active':'' ?>">
     <a class="nav-link collapsed" href="<?=base_url('h/pengeluaran');?>" >
-      <i class="fas fa-chevron-left"><i class="fas fa-chevron-left"></i></i>
+      <span class="material-icons" style="font-size: 20px;">bookmark_remove</span>
       <span>Pengeluaran</span>
     </a>
   </li>
@@ -44,9 +44,9 @@
   </div>
   
   <!-- Nav Item - Tables -->
-  <li class="nav-item">
+  <li class="nav-item <?= uri_string() == 'h/laporan' ? 'active':'' ?>">
     <a class="nav-link" href="<?=base_url('h/laporan');?>">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-fw fa-table" style="font-size: 20px;"></i>
       <span>Laporan</span>
     </a>
   </li>
