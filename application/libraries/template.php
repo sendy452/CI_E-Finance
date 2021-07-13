@@ -28,7 +28,7 @@ class Template {
 
             // Bagian $data['template'] untuk menampilkan file template.php dari folder Admin/_Template/
             // view('Admin/_Template/Template', $data, TRUE); untuk memanggil $data diatas seperti $data['head'], dll
-            echo $data['Template']= $this->_ci->load->view('Admin/_Template/Template',$data, TRUE); 
+            echo $data['Template']= $this->_ci->load->view('Admin/_Template/template',$data, TRUE); 
         }
     }
 }
