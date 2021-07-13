@@ -6,6 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <link rel = "icon" href ="<?=base_url('assets/img/hand-holding-usd-solid.svg')?>" type = "image/svg+xml" style="fill:white;">
   <title>E-Finance | <?php echo $judul;?></title>
 
   <!-- Custom fonts for this template-->
@@ -17,3 +18,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
+<style type="text/css">
+  .row {
+    margin-right: auto;
+    margin-left: auto;
+}
+</style>

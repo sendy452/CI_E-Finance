@@ -1,3 +1,6 @@
+<?php
+  $getGrup = $this->session->userdata('session_grup');
+?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
@@ -25,14 +28,14 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item <?= uri_string() == 'h/pendapatan' ? 'active':'' ?>">
     <a class="nav-link collapsed" href="<?=base_url('h/pendapatan');?>">
-      <span class="material-icons" style="font-size: 20px;">bookmark_add</span>
+      <i class="fas fa-plus-circle" style="font-size: 20px;"></i>
       <span>Pendapatan</span>
     </a>
   </li>
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item <?= uri_string() == 'h/pengeluaran' ? 'active':'' ?>">
     <a class="nav-link collapsed" href="<?=base_url('h/pengeluaran');?>" >
-      <span class="material-icons" style="font-size: 20px;">bookmark_remove</span>
+      <i class="fas fa-minus-circle" style="font-size: 20px;"></i>
       <span>Pengeluaran</span>
     </a>
   </li>
@@ -50,6 +53,27 @@
       <span>Laporan</span>
     </a>
   </li>
+
+  <?php if ($getGrup == "Admin"): ?>
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Admin
+    </div>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item <?= uri_string() == 'h/dataUsers' ? 'active':'' ?>">
+      <a class="nav-link" href="<?=base_url('h/dataUsers');?>">
+        <i class="fas fa-fw fa-users" style="font-size: 20px;"></i>
+        <span>Data User</span>
+      </a>
+    </li>
+    <li class="nav-item <?= uri_string() == 'h/laporanUser' ? 'active':'' ?>">
+      <a class="nav-link" href="<?=base_url('h/laporanUser');?>">
+        <i class="fas fa-fw fa-exclamation-triangle" style="font-size: 20px;"></i>
+        <span>Laporan User</span>
+      </a>
+    </li>
+  <?php endif ?>
   <hr class="sidebar-divider d-none d-md-block">
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

@@ -7,6 +7,10 @@ class UserModel extends CI_Model {
 	{
 		$this->db->insert('user', $data);
 	}
+    public function proses_laporkan($data)
+    {
+        $this->db->insert('laporan', $data);
+    }
 	public function proses_login($username, $password)
 	{
 		$this->db->select('*');
@@ -21,13 +25,35 @@ class UserModel extends CI_Model {
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('id_user', $where);
-        $query = $this->db->get();
+        $query = $this->db->get()->row();
         return $query;
     }
     function proses_update($where, $data)
     {
         $this->db->where('id_user',$where);
         $this->db->update('user', $data);
+    }
+    public function getLaporan()
+    {
+        $this->db->select('*');
+        $this->db->from('laporan');
+        $this->db->order_by('id_laporan', 'desc');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+    public function getUser()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->order_by('nama', 'asc');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+    public function hapus_user($where)
+    {
+        $this->db->delete('pemasukan', ['id_user' => $where]);
+        $this->db->delete('pengeluaran', ['id_user' => $where]);
+        $this->db->delete('user', ['id_user' => $where]);
     }
 }
 
