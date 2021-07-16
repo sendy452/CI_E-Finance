@@ -16,6 +16,7 @@ class Api extends CI_Controller {
         $password = $this->input->post('password');
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
+        $nohp = $this->input->post('nohp');
 
         $this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -28,12 +29,17 @@ class Api extends CI_Controller {
                 'pass' => $password,
                 'nama' => $nama,
                 'email' => $email,
+                'noHP' => $nohp,
                 'type' => "User",
-                'status' => 1
+                'status' => 1,
             );
             
             $this->UserModel->proses_register($data);
-            echo json_encode($data);
+            $pesan = array(
+                'message' => 'Register Success',
+                'success' => 1
+            );
+            echo json_encode($pesan);
         }else{
             echo json_encode(strip_tags(str_replace("\n", '', validation_errors())));
         }
@@ -44,21 +50,19 @@ class Api extends CI_Controller {
         $password = $this->input->post('password');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        if ($this->form_validation->run() == TRUE)
-                {
+        if ($this->form_validation->run() == TRUE){
             $cek = $this->UserModel->proses_login($username, $password)->result();
             if ($cek != FALSE) {
-                foreach ($cek as $row) {
-                    $user = $row->username;
-                    $type = $row->type;
-                    $nama = $row->nama;
-                    $login = TRUE;
-                }
-                $this->session->set_userdata('session_user', $user);
-                $this->session->set_userdata('session_grup', $type);
-                $this->session->set_userdata('session_nama', $nama);
-                
-                echo json_encode($cek);
+                $cek = $this->UserModel->proses_login($username, $password)->row();
+                $array = array(
+                    'id_user' => $cek->id_user,
+                    'username' => $cek->username,
+                    'nama' => $cek->nama,
+                    'email' => $cek->email,
+                    'status' => $cek->status,
+                    'error' => 'Login Succsess',
+                    );
+                echo json_encode($array);
             } else {
                 $array = array('error' => 'wrong username or password' );
                 echo json_encode($array);
