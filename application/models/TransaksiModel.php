@@ -5,7 +5,7 @@ class TransaksiModel extends CI_Model {
 
 	public function terakhirPendapatan($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN COUNT(jumlah) = 0 THEN 0 END FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC");
+    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC");
     	return $query->row()->jumlah;
     }
 	public function totalPendapatan($id_user)
@@ -15,7 +15,7 @@ class TransaksiModel extends CI_Model {
     }
     public function terakhirPengeluaran($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN COUNT(jumlah) = 0 THEN 0 END FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC");
+    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC");
     	return $query->row()->jumlah;
     }
     public function totalPengeluaran($id_user)
