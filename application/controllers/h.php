@@ -13,9 +13,9 @@ class H extends CI_Controller {
 	{
         if($this->session->userdata('login')==TRUE){
             $data['judul'] = "Dashboard";
-            $data['pendapatan'] = $this->TransaksiModel->terakhirPendapatan($this->session->userdata('session_id'));
+            $data['pendapatan'] = $this->TransaksiModel->terakhirPendapatanWeb($this->session->userdata('session_id'));
             $data['total'] = $this->TransaksiModel->totalPendapatan($this->session->userdata('session_id'));
-            $data['pengeluaran'] = $this->TransaksiModel->terakhirPengeluaran($this->session->userdata('session_id'));
+            $data['pengeluaran'] = $this->TransaksiModel->terakhirPengeluaranWeb($this->session->userdata('session_id'));
             $data['total2'] = $this->TransaksiModel->totalPengeluaran($this->session->userdata('session_id'));
             $data['aktif'] = $this->TransaksiModel->aktifTerakhir($this->session->userdata('session_id'));
             $data['keterangan'] = $this->TransaksiModel->keterangan($this->session->userdata('session_id'));

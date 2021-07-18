@@ -92,7 +92,7 @@
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
                                             <!-- body modal -->
-                                            <form action="<?=base_url('h/insert_pendapatan');?>" method="post">
+                                            <form action="<?=base_url('h/insert_pengeluaran');?>" method="post">
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id_user" value="<?=$getId?>">
                                                     Tanggal :
