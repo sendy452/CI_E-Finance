@@ -5,12 +5,12 @@ class TransaksiModel extends CI_Model {
 
 	public function terakhirPendapatan($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC");
+    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC, id_pemasukan DESC");
     	return $query->row()->jumlah;
     }
     public function terakhirPendapatanWeb($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN COUNT(jumlah) = 0 THEN 0 END FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC");
+    	$query = $this->db->query("SELECT jumlah AS jumlah FROM pemasukan WHERE id_user = ".$id_user." ORDER BY tgl_pemasukan DESC, id_pemasukan DESC");
     	return $query->row()->jumlah;
     }
 	public function totalPendapatan($id_user)
@@ -20,12 +20,12 @@ class TransaksiModel extends CI_Model {
     }
     public function terakhirPengeluaran($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC");
+    	$query = $this->db->query("SELECT jumlah, CASE WHEN jumlah = 0 THEN 0 END FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC, id_pengeluaran DESC");
     	return $query->row()->jumlah;
     }
      public function terakhirPengeluaranWeb($id_user)
     {
-    	$query = $this->db->query("SELECT jumlah, CASE WHEN COUNT(jumlah) = 0 THEN 0 END FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC");
+    	$query = $this->db->query("SELECT jumlah AS jumlah FROM pengeluaran WHERE id_user = ".$id_user." ORDER BY tgl_pengeluaran DESC, id_pengeluaran DESC");
     	return $query->row()->jumlah;
     }
     public function totalPengeluaran($id_user)
@@ -35,12 +35,12 @@ class TransaksiModel extends CI_Model {
     }
     public function aktifTerakhir($id_user)
     {
-    	$query = $this->db->query("SELECT CASE WHEN tgl_pengeluaran > tgl_pemasukan THEN MAX(pengeluaran.keterangan) WHEN tgl_pemasukan > tgl_pengeluaran THEN MAX(pemasukan.keterangan) ELSE 'Belum ada aktivitas' END AS aktivitas FROM pengeluaran LEFT JOIN pemasukan ON pengeluaran.id_user = pemasukan.id_user WHERE pengeluaran.id_user = ".$id_user." AND pemasukan.id_user = ".$id_user);
+    	$query = $this->db->query("SELECT IF(tgl_pengeluaran > tgl_pemasukan, pengeluaran.keterangan, pemasukan.keterangan) AS aktivitas FROM pemasukan JOIN pengeluaran WHERE pemasukan.id_user = ".$id_user." AND pengeluaran.id_user = ".$id_user." ORDER BY tgl_pemasukan DESC, id_pemasukan DESC, tgl_pengeluaran DESC, id_pengeluaran DESC LIMIT 1");
     	return $query->row()->aktivitas;
     }
     public function keterangan($id_user)
     {
-    	$query = $this->db->query("SELECT MAX(tgl_pengeluaran), pengeluaran.keterangan, MAX(tgl_pemasukan), pemasukan.keterangan, CASE WHEN tgl_pengeluaran > tgl_pemasukan THEN 'Pengeluaran' WHEN tgl_pemasukan > tgl_pengeluaran THEN 'Pendapatan' ELSE '' END AS aktivitas FROM pengeluaran LEFT JOIN pemasukan ON pengeluaran.id_user = pemasukan.id_user WHERE pengeluaran.id_user = ".$id_user." AND pemasukan.id_user = ".$id_user);
+    	$query = $this->db->query("SELECT IF(MAX(tgl_pengeluaran) > MAX(tgl_pemasukan),'Pengeluaran', ''), IF(MAX(tgl_pengeluaran) < MAX(tgl_pemasukan),'Pemasukan', '') AS aktivitas FROM pengeluaran LEFT JOIN pemasukan ON pengeluaran.id_user = pemasukan.id_user WHERE pengeluaran.id_user = ".$id_user." AND pemasukan.id_user = ".$id_user);
     	return $query->row()->aktivitas;
     }
 	public function insert_pemasukan($data)
